@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <title>Document</title>
+        <style type="text/css">
+            /* 提供样式 */
+            [v-cloak] {
+                display: none;
+            }
+        </style>
+    </head>
+
+    <body>
+        <div id="app">
+            <div v-cloak>
+                {{ msg }}
+            </div>
+        </div>
+        <script src="./js/vue.js"></script>
+        <script>
+            /*
+            v-clock 指令的用法
+            解决插值表达式 {{}} 带来的闪动问题
+            1、提供样式
+            2、在插值表达式所在的标签中条件 v-cloak 指令的用法
+            3、指令的本质实际上就是自定义属性
+
+            背后的原理：先通过样式隐藏内容，然后在内存中进行值的替换，替换好之后再显示最终的结果
+            */
+            var vm = new Vue({
+                el: '#app',
+                data: {
+                    msg: 'Hello Vue',
+                },
+            })
+        </script>
+    </body>
+</html>

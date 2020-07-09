@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <title>Document</title>
+    </head>
+    <body>
+        <div id="app">
+            <!-- 插值表达式 存在闪动问题 -->
+            <div>{{msg}}</div>
+            <!-- 纯文本 不存在闪动问题 可以取代 v-cloak 指令 -->
+            <div v-text="msg"></div>
+            <!-- 填充 html 片段
+                可以设置样式
+                安全问题：导致 xss 攻击，本站数据可用，第三方数据不可用 -->
+            <div v-html="msg1"></div>
+            <!-- 显示原始数据：跳过 vue.js 的编译过程 -->
+            <div v-pre>{{ msg }}</div>
+        </div>
+        <script type="text/javascript" src="js/vue.js"></script>
+        <script type="text/javascript">
+            /*
+            1、v-text 指令用于将数据填充到标签中，作用与插值表达式类似，但是没有闪动问题 v-text='msg'
+            2、v-html 指令用于将 HTML 片段填充到标签中，但是可能存在严重的安全问题（本站数据可用）v-html='msg1'
+            3、v-pre 指令用于直接将原始信息填充到页面 需要搭配 {{}}
+            */
+            var vm = new Vue({
+                el: '#app',
+                data: {
+                    msg: 'Hello Vue',
+                    msg1: '<h1>HTML</h1>',
+                },
+            })
+        </script>
+    </body>
+</html>
