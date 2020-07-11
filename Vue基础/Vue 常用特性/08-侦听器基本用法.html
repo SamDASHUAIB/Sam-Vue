@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <title>Document</title>
+    </head>
+
+    <body>
+        <div id="app">
+            <div>
+                <span>名：</span>
+                <span>
+                    <input type="text" v-model="firstName" />
+                </span>
+            </div>
+            <div>
+                <span>姓：</span>
+                <span>
+                    <input type="text" v-model="lastName" />
+                </span>
+            </div>
+            <div>{{fullName}}</div>
+        </div>
+        <script type="text/javascript" src="js/vue.js"></script>
+        <script type="text/javascript">
+            /*
+      侦听器:监听数据的变化，数据变化 -> 通知侦听器所绑定的方法
+    */
+            var vm = new Vue({
+                el: '#app',
+                data: {
+                    firstName: 'Jim',
+                    lastName: 'Green',
+                    fullName: 'Jim Green',
+                },
+                // 计算逻辑由于缓存的关系也能实现和侦听器一样的效果
+                // computed: {
+                //     fullName: function () {
+                //         return this.firstName + ' ' + this.lastName
+                //     },
+                // },
+
+                // watch: {
+                //   // 监听的数据名称要一致，一旦数据发生变化，触发定义的方法，异步，开销大 只能用 watch
+                // // data 中的属性名称和 watch 中的方法名称要一致
+                //   firstName: function(val) {
+                //     this.fullName = val + ' ' + this.lastName;
+                //   },
+                //   lastName: function(val) {
+                //     this.fullName = this.firstName + ' ' + val;
+                //   }
+                // }
+                watch: {
+                    firstName: function (val) {
+                        this.fullName = val + '  ' + this.lastName
+                    },
+                    lastName: function (val) {
+                        this.fullName = this.firstName + '  ' + val
+                    },
+                },
+            })
+        </script>
+    </body>
+</html>

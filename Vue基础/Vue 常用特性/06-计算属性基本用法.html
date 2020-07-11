@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <title>Document</title>
+    </head>
+    <body>
+        <div id="app">
+            <div>{{msg}}</div>
+            <!-- 计算属性直接写在插值表达式里面 -->
+            <div>{{reverseString}}</div>
+        </div>
+        <script type="text/javascript" src="js/vue.js"></script>
+        <script type="text/javascript">
+            /*
+            计算属性，提高代码可读性，将复杂的计算逻辑抽取出来，让模板变得更加简单
+            任何的复杂逻辑, 都应该使用计算逻辑
+            */
+            var vm = new Vue({
+                el: '#app',
+                data: {
+                    msg: 'Nihao',
+                },
+                // 计算属性, computed
+                // computed: {
+                //     reverseString: function () {
+                //         // 必须添加 return
+                //         return this.msg.split('').reverse().join('')
+                //     },
+                // },
+                computed: {
+                    reverseString: function () {
+                        // 必须添加 return
+                        return this.msg.split('').reverse().join('')
+                    },
+                },
+            })
+        </script>
+    </body>
+</html>
