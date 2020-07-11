@@ -1,29 +1,28 @@
 <!DOCTYPE html>
 <html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <title>Document</title>
+    </head>
 
-<head>
-  <meta charset="UTF-8">
-  <title>Document</title>
-</head>
-
-<body>
-
-  <script type="text/javascript">
-    /*
+    <body>
+        <script type="text/javascript">
+            /*
       Fetch API 基本用法，fetch 基于 Promise 实现
     */
-    fetch('http://localhost:3000/fdata').then(function (data) {
-      // text()方法属于fetchAPI的一部分，它返回一个Promise实例对象，用于获取后台返回的数据
-      return data.text();
-    }).then(function (data) {
-      console.log(data); // 通过下一个 then 得到具体的数据
-    })
-    // fetch('http://localhost:3000/fdata').then(data => {
-    //   return data.text();
-    // }).then(data => {
-    //   console.log(data);
-    // })
-  </script>
-</body>
-
+            fetch('http://localhost:3000/fdata')
+                .then(function (data) {
+                    // text()方法属于fetchAPI的一部分，它返回一个Promise实例对象，用于获取后台返回的数据
+                    return data.text()
+                })
+                .then(function (data) {
+                    console.log(data) // 通过下一个 then 得到具体的数据
+                })
+            // fetch('http://localhost:3000/fdata').then(data => {
+            //   return data.text();
+            // }).then(data => {
+            //   console.log(data);
+            // })
+        </script>
+    </body>
 </html>

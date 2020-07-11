@@ -1,24 +1,34 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>Document</title>
-</head>
-<body>
-  
-  <script type="text/javascript">
-    /*
-      Fetch响应结果的数据格式
-    */
-    fetch('http://localhost:3000/json').then(function(data){
-      // return data.json();
-      return data.text();
-    }).then(function(data){
-      // console.log(data.uname)
-      // console.log(typeof data)
-      var obj = JSON.parse(data);
-      console.log(obj.uname,obj.age,obj.gender)
-    })
-  </script>
-</body>
+    <head>
+        <meta charset="UTF-8" />
+        <title>Document</title>
+    </head>
+    <body>
+        <script type="text/javascript">
+            /*
+                Fetch响应结果的数据格式
+            // */
+            // fetch('http://localhost:3000/json')
+            //     .then(function (data) {
+            //         return data.text()
+            //     })
+            //     .then(function (data) {
+            //         // string 显然，text() 返回体是一个 string
+            //         console.log(typeof data)
+            //         var obj = JSON.parse(data)
+            //         console.log(obj.uname, obj.age, obj.gender)
+            //     })
+            fetch('http://localhost:3000/json')
+                .then((result) => {
+                    // 返回一个     Promise JSON 格式的对象
+                    return result.json()
+                    // json() 其实就是内置了 JSON.parse()
+                })
+                .then((data) => {
+                    console.log(data)
+                    console.log(data.uname, data.age, data.gender)
+                })
+        </script>
+    </body>
 </html>
