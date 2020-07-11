@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <title>Document</title>
+    </head>
+
+    <body>
+        <div id="app">
+            <div>{{pmsg}}</div>
+            <!-- 以属性传递数据 title -->
+            <!-- title 静态数据 :title 动态绑定 -->
+            <menu-item title="来自父组件的值" content="hello"></menu-item>
+            <!-- :title：动态传递数据（ptitle 定义在父组件的 data 中），content: 静态传递属性（写死） -->
+            <menu-item :title="ptitle" content="hello"></menu-item>
+        </div>
+        <script type="text/javascript" src="js/vue.js"></script>
+        <script type="text/javascript">
+            /*
+            父组件向子组件传值-基本使用
+            */
+            // 全局组件 menu-item(子)
+            Vue.component('menu-item', {
+                // props 数组接收父组件传递过来的数据, <menu-item> 的 title 和 content 属性
+                props: ['title', 'content'],
+                data: function () {
+                    return {
+                        msg: '子组件本身的数据',
+                    }
+                },
+                template: '<div>{{msg + "----" + title + "-----" + content}}</div>',
+            })
+            var vm = new Vue({
+                el: '#app',
+                data: {
+                    pmsg: '父组件中内容',
+                    ptitle: '动态绑定属性',
+                },
+            }) // root 组件(父)
+        </script>
+    </body>
+</html>

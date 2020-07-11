@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <title>Document</title>
+    </head>
+
+    <body>
+        <div id="app">
+            <!-- 就像正常的 HTML 标签一样使用组件 -->
+            <button-counter></button-counter>
+            <button-counter></button-counter>
+            <button-counter></button-counter>
+        </div>
+        <script type="text/javascript" src="js/vue.js"></script>
+        <script type="text/javascript">
+            /*
+            组件注册(子组件)
+            */
+            Vue.component('button-counter', {
+                // data 必须是一个函数, return 一个对象
+                // 组件需要的内部数据
+                // 使用函数保证每个组件都有自己独立的数据
+                data: function () {
+                    return {
+                        count: 0,
+                    }
+                },
+                // template 组件模板内容
+
+                template:
+                    '<button @click="handle" >点击了 {{count}} 次</button>',
+                methods: {
+                    handle: function () {
+                        this.count += 2
+                    },
+                },
+            })
+            var vm = new Vue({
+                el: '#app',
+                data: {},
+            })
+        </script>
+    </body>
+</html>
