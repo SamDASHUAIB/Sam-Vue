@@ -50,6 +50,7 @@
                 //     this.fullName = this.firstName + ' ' + val;
                 //   }
                 // }
+                // v-model 绑定的 data 中的数据与 watch 的方法名要一致
                 watch: {
                     firstName: function (val) {
                         this.fullName = val + '  ' + this.lastName
