@@ -10,6 +10,7 @@
             <div>{{msg}}</div>
             <!-- 纯文本 不存在闪动问题 可以取代 v-cloak 指令 -->
             <div v-text="msg"></div>
+            <div v-text="msg2"></div>
             <!-- 填充 html 片段
                 可以设置样式
                 安全问题：导致 xss 攻击，本站数据可用，第三方数据不可用 -->
@@ -29,6 +30,7 @@
                 data: {
                     msg: 'Hello Vue',
                     msg1: '<h1>HTML</h1>',
+                    msg2: 1 + 2 + 3,
                 },
             })
         </script>

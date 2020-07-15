@@ -21,6 +21,10 @@
                     <span>{{item.ename}} </span>
                     <span>{{item.cname}} </span>
                 </li>
+                <li v-for="(item, index) in myFruits" :key="index">
+                    <span>{{item.ename}}</span>
+                    <span>{{item.cname}}</span>
+                </li>
             </ul>
         </div>
         <script type="text/javascript" src="js/vue.js"></script>

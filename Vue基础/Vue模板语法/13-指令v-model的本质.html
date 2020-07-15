@@ -7,7 +7,7 @@
     <body>
         <div id="app">
             <div>{{msg}}</div>
-            <!-- v-on:input: 监听 input 内容的改变 -->
+            <!-- v-on:input: 监听 input 内容的改变, 针对 input 内容的改变做出一些逻辑处理 -->
             <input type="text" v-bind:value="msg" v-on:input="handle" />
 
             <input
@@ -15,12 +15,6 @@
                 v-bind:value="msg"
                 v-on:input="msg=$event.target.value"
             />
-            <input
-                type="text"
-                v-bind:value="msg"
-                v-on:input="msg=$event.target.value"
-            />
-            <input type="text" v-model="msg" />
             <input type="text" v-model="msg" />
         </div>
         <script type="text/javascript" src="js/vue.js"></script>
@@ -32,7 +26,7 @@
 
             <input
                 type="text"
-                // 绑定 value 属性中的值, 可以动态修改属性中的值 属性的绑定
+                // 绑定 value 属性中的值, 可以动态修改属性中的值 属性的绑定 模型 => 页面
                 v-bind:value="msg"
                 // 用页面的新值覆盖原来模型中的数据 页面 => 模型 事件的绑定
                 v-on:input="msg = $event.target.value"

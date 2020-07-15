@@ -8,6 +8,7 @@
         <div id="app">
             <!-- 只有按下 a 键才会触发 handle 函数 -->
             <input type="text" v-on:keyup.A="handle" v-model="info" />
+            <input type="text" v-on:keyup.B="handle" v-model="info" />
         </div>
         <script type="text/javascript" src="js/vue.js"></script>
         <script type="text/javascript">
@@ -17,6 +18,7 @@
             Vue.config.keyCodes.name = event.keyCode;
             */
             Vue.config.keyCodes.A = 65
+            Vue.config.keyCodes.B = 66
             var vm = new Vue({
                 el: '#app',
                 data: {

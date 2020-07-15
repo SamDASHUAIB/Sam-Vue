@@ -13,7 +13,7 @@
                 <button v-on:click="handle1">点击1</button>
                 <!--
                     2、如果事件绑定函数调用，那么事件对象必须作为最后一个参数显示传递，
-                    并且事件对象的名称必须是 $event $event $event $event $event $event
+                    并且事件对象的名称必须是 $event
                     $event: 事件对象的名称，并且事件对象必须放在最后一个
                 -->
                 <button v-on:click="handle2(123, 456, $event)">点击2</button>
@@ -27,7 +27,7 @@
                     num: 0,
                 },
                 methods: {
-                    // 默认第一个就是事件对象 $event
+                    // 默认第一个就是事件对象 $event, 形式参数的名字可以写成 event
                     handle1: function (event) {
                         console.log(event.target.innerHTML)
                     },
