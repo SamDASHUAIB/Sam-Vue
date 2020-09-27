@@ -25,6 +25,7 @@
             Vue数组操作
             1、变异方法：会影响数组的原始数据的变化。影响原始数组, 触发视图更新 push pop unshift shift splice sort reverse
             2、替换数组：不会影响原始的数组数据，而是形成一个新的数组，形成新数组。不会丢失 DOM 并重新渲染整个列表
+            filter concat slice 方法
         */
             var vm = new Vue({
                 el: '#app',
@@ -34,6 +35,7 @@
                 },
                 methods: {
                     add: function () {
+                        // 变异方法: 直接在原数组上进行增删改查
                         this.list.push(this.fname)
                     },
                     del: function () {

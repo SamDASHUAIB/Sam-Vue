@@ -1,36 +1,36 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8" />
-        <title>Document</title>
-    </head>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Document</title>
+  </head>
 
-    <body>
-        <div id="app">
-            <!-- 在模板运用 v-focus -->
-            <input type="text" />
-            <input type="text" v-focus />
-        </div>
-        <script type="text/javascript" src="js/vue.js"></script>
-        <script type="text/javascript">
-            /*
+  <body>
+    <div id="app">
+      <!-- 在模板运用 v-focus -->
+      <input type="text" />
+      <input type="text" v-focus />
+    </div>
+    <script type="text/javascript" src="js/vue.js"></script>
+    <script type="text/javascript">
+      /*
         自定义指令：内置指令无法满足需求
         */
-            // 注册一个全局自定义指令 'v-focus' 实现默认聚焦输入框
-            Vue.directive('focus', {
-                inserted: function (el) {
-                    // el 表示指令所绑定的元素(在 HTML 模板中)可以用来直接操作 DOM 元素
-                    // focus 表示聚焦元素
-                    el.focus()
-                },
-            })
-            var vm = new Vue({
-                el: '#app',
-                data: {},
-                methods: {
-                    handle: function () {},
-                },
-            })
-        </script>
-    </body>
+      // 注册一个全局自定义指令 'v-focus' 实现默认聚焦输入框
+      Vue.directive('focus', {
+        inserted: function (el) {
+          // el 表示指令所绑定的元素(在 HTML 模板中)可以用来直接操作 DOM 元素
+          // focus 表示聚焦元素
+          el.focus()
+        },
+      })
+      var vm = new Vue({
+        el: '#app',
+        data: {},
+        methods: {
+          handle: function () {},
+        },
+      })
+    </script>
+  </body>
 </html>

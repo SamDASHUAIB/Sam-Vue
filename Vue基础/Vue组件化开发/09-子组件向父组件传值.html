@@ -1,28 +1,28 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8" />
-        <title>Document</title>
-    </head>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Document</title>
+  </head>
 
-    <body>
-        <div id="app">
-            <div :style='{fontSize: fontSize + "px"}'>{{pmsg}}</div>
-            <!-- 父组件里面监听子组件的事件使用 v-on -->
-            <menu-item :parr="parr" @enlarge-text="handle"></menu-item>
-        </div>
+  <body>
+    <div id="app">
+      <div :style='{fontSize: fontSize + "px"}'>{{pmsg}}</div>
+      <!-- 父组件里面监听子组件的事件使用 v-on -->
+      <menu-item :parr="parr" @enlarge-text="handle"></menu-item>
+    </div>
 
-        <script type="text/javascript" src="js/vue.js"></script>
-        <script type="text/javascript">
-            /*
+    <script type="text/javascript" src="js/vue.js"></script>
+    <script type="text/javascript">
+      /*
             子组件向父组件传值-基本用法
-            props传递数据原则：单向数据流, 值允许父组件向子组件传递数据, 不允许子组件直接向父组件传递数据
-            */
+            props传递数据原则：单向数据流, 允许父组件向子组件传递数据, 不允许子组件直接向父组件传递数据
+      */
 
-            Vue.component('menu-item', {
-                // 子组件通过自定义事件向父组件传递信息 $emit('xxx')
-                props: ['parr'],
-                template: `
+      Vue.component('menu-item', {
+        // 子组件通过自定义事件向父组件传递信息 $emit('xxx') 直接定义在模板里面
+        props: ['parr'],
+        template: `
         <div>
           <ul>
             <li :key='index' v-for='(item,index) in parr'>{{item}}</li>
@@ -31,21 +31,21 @@
           <button @click='$emit("enlarge-text")'>扩大父组件中字体大小</button>
         </div>
       `,
-            })
-            var vm = new Vue({
-                el: '#app',
-                data: {
-                    pmsg: '父组件中内容',
-                    parr: ['apple', 'orange', 'banana'],
-                    fontSize: 10,
-                },
-                methods: {
-                    handle: function () {
-                        // 扩大字体大小
-                        this.fontSize += 5
-                    },
-                },
-            })
-        </script>
-    </body>
+      })
+      var vm = new Vue({
+        el: '#app',
+        data: {
+          pmsg: '父组件中内容',
+          parr: ['apple', 'orange', 'banana'],
+          fontSize: 10,
+        },
+        methods: {
+          handle: function () {
+            // 扩大字体大小
+            this.fontSize += 5
+          },
+        },
+      })
+    </script>
+  </body>
 </html>

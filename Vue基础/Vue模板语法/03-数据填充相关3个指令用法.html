@@ -7,10 +7,16 @@
     <body>
         <div id="app">
             <!-- 插值表达式 存在闪动问题 -->
-            <div>{{msg}}</div>
+            <div>{{msg2}}</div>
             <!-- 纯文本 不存在闪动问题 可以取代 v-cloak 指令 -->
             <div v-text="msg"></div>
             <div v-text="msg2"></div>
+            <div v-text>
+                {{ msg }}
+            </div>
+            <div v-text>
+                {{ msg2 }}
+            </div>
             <!-- 填充 html 片段
                 可以设置样式
                 安全问题：导致 xss 攻击，本站数据可用，第三方数据不可用 -->

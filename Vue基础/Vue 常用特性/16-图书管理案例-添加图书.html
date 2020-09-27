@@ -45,12 +45,7 @@
                             <label for="name">
                                 名称：
                             </label>
-                            <input
-                                type="text"
-                                id="name"
-                                v-model="name"
-                                @keyup.enter="submit"
-                            />
+                            <input type="text" id="name" v-model="name" @keyup.enter="submit" />
                             <!-- 事件绑定 v-on -->
                             <button @click="handle">
                                 提交

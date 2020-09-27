@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div id="app">
+      <div :style="{fontSize: fontSize + 'px'}">{{pmsg}}</div>
+      <!-- 父组件通过 $event (固定写法) 接收子组件自定义事件携带过来的参数 -->
+      <menu-item :parr="parr" @enlarge-text="handle($event)"></menu-item>
+    </div>
+    <script src="js/vue.js"></script>
+    <script>
+      /*
+        子组件->父组件传值-携带参数
+        $emit('name', val)
+        直接写在 template 里面
+      */
+      Vue.component('menu-item', {
+        props: ['parr'],
+        template: `
+      <div>
+        <ul>
+          <li v-for="(item, index) in parr" :key="index"></li>
+        </ul>
+        <button @click=" $emit('enlarge-text', 5) ">
+          扩大父组件中字体大小
+        </button>
+        <button @click=" $emit('enlarge-text', 100) ">
+          扩大父组件中字体大小
+        </button>
+      </div>
+        `,
+      })
+      var vm = new Vue({
+        el: '#app',
+        data: {
+          pmsg: '父组件中内容',
+          parr: ['apple', 'orange', 'banana'],
+          fontSize: 10,
+        },
+        methods: {
+          // val 参数就是 $emit 传递过来的参数值
+          handle: function (val) {
+            this.fontSize += val
+          },
+        },
+      })
+    </script>
+  </body>
+</html>

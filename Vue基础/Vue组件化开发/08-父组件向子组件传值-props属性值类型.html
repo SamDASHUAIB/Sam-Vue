@@ -1,29 +1,32 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8" />
-        <title>Document</title>
-    </head>
-    <body>
-        <div id="app">
-            <div>{{pmsg}}</div>
-            <menu-item
-                :pstr="pstr"
-                :pnum="12"
-                :pboo="true"
-                :parr="parr"
-                :pobj="pobj"
-            ></menu-item>
-        </div>
-        <script type="text/javascript" src="js/vue.js"></script>
-        <script type="text/javascript">
-            /*
+  <head>
+    <meta charset="UTF-8" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div id="app">
+      <div>{{pmsg}}</div>
+      <!-- 父组件通过绑定子组件的属性(data 中定义的数据)将值传递给子组件 -->
+      <!-- 记得使用 v-bind -->
+      <menu-item
+        :pstr="pstr"
+        :pnum="12"
+        :pboo="true"
+        :parr="parr"
+        :pobj="pobj"
+      ></menu-item>
+    </div>
+    <script type="text/javascript" src="js/vue.js"></script>
+    <script type="text/javascript">
+      /*
             父组件向子组件传值-props属性值类型
-            */
+      */
 
-            Vue.component('menu-item', {
-                props: ['pstr', 'pnum', 'pboo', 'parr', 'pobj'],
-                template: `
+      Vue.component('menu-item', {
+        // 组件内部通过 props 数组接收(HTML)传递过来的属性
+        props: ['pstr', 'pnum', 'pboo', 'parr', 'pobj'],
+        template: `
         <div>
             <div>{{pstr}}</div>
             <div>{{12 + pnum}}</div>
@@ -35,19 +38,19 @@
             <span>{{pobj.age}}</span>
         </div>
         `,
-            })
-            var vm = new Vue({
-                el: '#app',
-                data: {
-                    pmsg: '父组件中内容',
-                    pstr: 'hello',
-                    parr: ['apple', 'orange', 'banana'],
-                    pobj: {
-                        name: 'lisi',
-                        age: 12,
-                    },
-                },
-            })
-        </script>
-    </body>
+      })
+      var vm = new Vue({
+        el: '#app',
+        data: {
+          pmsg: '父组件中内容',
+          pstr: 'hello',
+          parr: ['apple', 'orange', 'banana'],
+          pobj: {
+            name: 'lisi',
+            age: 12,
+          },
+        },
+      })
+    </script>
+  </body>
 </html>

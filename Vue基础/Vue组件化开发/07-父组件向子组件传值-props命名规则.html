@@ -1,42 +1,41 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8" />
-        <title>Document</title>
-    </head>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Document</title>
+  </head>
 
-    <body>
-        <div id="app">
-            <div>{{pmsg}}</div>
-            <!-- html 中使用短横线形式 -->
-            <!-- menuTitle => menu-title -->
-            <menu-item :menu-title="ptitle"></menu-item>
-        </div>
-        <script type="text/javascript" src="js/vue.js"></script>
-        <script type="text/javascript">
-            /*
+  <body>
+    <div id="app">
+      <div>{{pmsg}}</div>
+      <!-- html 中使用短横线形式 -->
+      <!-- menuTitle => menu-title -->
+      <menu-item :menu-title="ptitle"></menu-item>
+    </div>
+    <script type="text/javascript" src="js/vue.js"></script>
+    <script type="text/javascript">
+      /*
             父组件向子组件传值-props属性名规则
-            */
-            Vue.component('third-com', {
-                // js 中使用驼峰形式
-                props: ['testTile'],
-                template: '<div>{{testTile}}</div>',
-            })
-            Vue.component('menu-item', {
-                props: ['menuTitle'],
-                // 在模板中使用驼峰形式不报错
-                template:
-                    `<div>{{menuTitle}}
+      */
+      Vue.component('third-com', {
+        // js 中使用驼峰形式 html 中使用短横线
+        props: ['testTile'],
+        template: '<div>{{testTile}}</div>',
+      })
+      Vue.component('menu-item', {
+        props: ['menuTitle'],
+        // 在模板中使用驼峰形式不报错
+        template: `<div>{{menuTitle}}
                         <third-com testTile="hello"></third-com>
                     </div>`,
-            })
-            var vm = new Vue({
-                el: '#app',
-                data: {
-                    pmsg: '父组件中内容',
-                    ptitle: '动态绑定属性',
-                },
-            })
-        </script>
-    </body>
+      })
+      var vm = new Vue({
+        el: '#app',
+        data: {
+          pmsg: '父组件中内容',
+          ptitle: '动态绑定属性',
+        },
+      })
+    </script>
+  </body>
 </html>

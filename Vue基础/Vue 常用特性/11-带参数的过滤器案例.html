@@ -17,6 +17,8 @@
 
             // 从第二个参数开始处理，第一个参数 value 默认是要处理的数据，
             // 接收参数时, 从第二个参数开始接收
+            // value 就是 插值表达式中的 date
+            // arg 就是 format() 里面的模式
             Vue.filter('format', function (value, arg) {
                 function dateFormat(date, format) {
                     if (typeof date === 'string') {
@@ -39,10 +41,7 @@
                         S: date.getMilliseconds(), //毫秒
                     }
 
-                    format = format.replace(/([yMdhmsqS])+/g, function (
-                        all,
-                        t
-                    ) {
+                    format = format.replace(/([yMdhmsqS])+/g, function (all, t) {
                         var v = map[t]
                         if (v !== undefined) {
                             if (all.length > 1) {
@@ -51,9 +50,7 @@
                             }
                             return v
                         } else if (t === 'y') {
-                            return (date.getFullYear() + '').substr(
-                                4 - all.length
-                            )
+                            return (date.getFullYear() + '').substr(4 - all.length)
                         }
                         return all
                     })

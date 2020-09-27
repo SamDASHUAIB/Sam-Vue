@@ -1,39 +1,39 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8" />
-        <title>Document</title>
-    </head>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Document</title>
+  </head>
 
-    <body>
-        <div id="app">
-            <input type="text" v-color="msg" />
-        </div>
-        <script type="text/javascript" src="js/vue.js"></script>
-        <script type="text/javascript">
-            /*
+  <body>
+    <div id="app">
+      <input type="text" v-color="msg" />
+    </div>
+    <script type="text/javascript" src="js/vue.js"></script>
+    <script type="text/javascript">
+      /*
       自定义指令-带参数
     */
-            Vue.directive('color', {
-                bind: function (el, binding) {
-                    // 根据指令的参数设置背景色
-                    // console.log(binding.value.color)
-                    // binding 一个对象, value 属性就是该指令绑定的值
-                    // 通过 binding 参数拿到 msg 的值 binding.value.color => msg.color
-                    el.style.backgroundColor = binding.value.color
-                },
-            })
-            var vm = new Vue({
-                el: '#app',
-                data: {
-                    msg: {
-                        color: 'blue',
-                    },
-                },
-                methods: {
-                    handle: function () {},
-                },
-            })
-        </script>
-    </body>
+      Vue.directive('color', {
+        bind: function (el, binding) {
+          // 根据指令的参数设置背景色
+          // console.log(binding.value.color)
+          // binding 一个对象, value 属性就是该指令绑定的值
+          // 通过 binding 参数拿到 msg 的值 binding.value.color => msg.color
+          el.style.backgroundColor = binding.value.color
+        },
+      })
+      var vm = new Vue({
+        el: '#app',
+        data: {
+          msg: {
+            color: 'blue',
+          },
+        },
+        methods: {
+          handle: function () {},
+        },
+      })
+    </script>
+  </body>
 </html>

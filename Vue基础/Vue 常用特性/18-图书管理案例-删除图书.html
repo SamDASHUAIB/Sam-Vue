@@ -41,12 +41,7 @@
                             <label for="id">
                                 编号：
                             </label>
-                            <input
-                                type="text"
-                                id="id"
-                                v-model="id"
-                                :disabled="flag"
-                            />
+                            <input type="text" id="id" v-model="id" :disabled="flag" />
                             <label for="name">
                                 名称：
                             </label>
@@ -70,14 +65,10 @@
                             <td>{{item.name}}</td>
                             <td>{{item.date}}</td>
                             <td>
-                                <a href="" @click.prevent="toEdit(item.id)"
-                                    >修改</a
-                                >
+                                <a href="" @click.prevent="toEdit(item.id)">修改</a>
                                 <span>|</span>
                                 <!-- 要具体删除哪一个, 需要传入 item.id 以确定 -->
-                                <a href="" @click.prevent="deleteBook(item.id)"
-                                    >删除</a
-                                >
+                                <a href="" @click.prevent="deleteBook(item.id)">删除</a>
                             </td>
                         </tr>
                     </tbody>

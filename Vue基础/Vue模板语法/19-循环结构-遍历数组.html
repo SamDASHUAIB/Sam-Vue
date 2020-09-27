@@ -3,6 +3,11 @@
     <head>
         <meta charset="UTF-8" />
         <title>Document</title>
+        <style>
+            [v-cloak] {
+                display: none;
+            }
+        </style>
     </head>
 
     <body>
@@ -10,10 +15,13 @@
             <div>水果列表</div>
             <ul>
                 <!-- for + item + {{}} -->
-                <li v-for="item in fruits">{{item}}</li>
+                <li v-cloak="true" v-for="item in fruits">{{item}}</li>
                 <!-- for + (item, index) + {{}} -->
-                <li v-for="(item, index) in fruits">
+                <li v-cloak="true" v-for="(item, index) in fruits">
                     {{item + '-----' + index}}
+                </li>
+                <li v-for=" (item, index) in fruits ">
+                    {{ item + '_____' + index }}
                 </li>
                 <!-- :key 帮助 Vue 区分不同的元素，从而提高性能
                 原则上在使用 v-for 的时候，都加上 :key  -->
